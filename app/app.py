@@ -84,8 +84,15 @@ The implementation designed to be as simple as possible. The validation code use
 """
 
 with st.beta_expander("Quality Assurance"):
-    st.write("✅ Tested on Google Chrome Version 91.0.4472.114")
-    st.write("✅ COG uploaded locally")
-    st.write("✅ COG stored on AWS")
+    st.write("✅ Tested on Google Chrome Version 91.0.4472.114.")
+    st.write("✅ File with no .tif or .tiff extensions could not be uploaded.")
+    st.write("✅ COG uploaded locally is successfully validated.")
+    st.write("✅ Broken links are not valid.")
+    st.write("✅ Links with no extension are not valid.")
+    st.write("✅ Links with no not .tif ot .tiff extensions are not valid.")
+    st.write("✅ COG stored on AWS is successfully validated.")
+    st.write("✅ Non-COG file returns Not Valid COG error.")
+    st.write("✅ Information about size of IFD headers returned.")
+    st.write(":warning: Uploaded file is not displayed once changed options after file was uploaded.")
 with st.beta_expander("Known Limitations"):
     st.write(":warning: Max file size to upload is 200MB")
