@@ -1,2 +1,2 @@
-gdal-bin=3.0.4
+gdal-bin=3.2.2+dfsg-2
 libgdal-dev
