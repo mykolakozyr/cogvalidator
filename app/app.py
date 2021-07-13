@@ -13,8 +13,7 @@ CHECK_EMOJI_URL = "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/th
 # Set page title and favicon.
 st.set_page_config(
     page_title="COG Validator", 
-    page_icon=CHECK_EMOJI_URL,
-    layout="wide"
+    page_icon=CHECK_EMOJI_URL
 )
 
 # Display header.
@@ -24,10 +23,6 @@ st.image(CHECK_EMOJI_URL, width=80)
 """
 # Cloud Optimized GeoTIFF Validator
 """
-
-
-
-col1, col2 = st.beta_columns([1,1])
 source = st.radio("Select the source of your Cloud Optimized GeoTIFF",('Local file', 'Link to remote file'))
 
 uploaded_file = None
@@ -83,7 +78,9 @@ elif source == 'Link to remote file':
 The implementation designed to be as simple as possible. The validation code used is the one shared on [COG Developers Guide](https://www.cogeo.org/developers-guide.html) linking to [this source code](https://github.com/OSGeo/gdal/blob/master/gdal/swig/python/gdal-utils/osgeo_utils/samples/validate_cloud_optimized_geotiff.py) by [Even Rouault](https://twitter.com/EvenRouault).
 """
 
-with st.beta_expander("Quality Assurance"):
+col1, col2 = st.beta_columns([2,1])
+
+with col1.beta_expander("Quality Assurance"):
     st.write("✅ Tested on Google Chrome Version 91.0.4472.114.")
     st.write("✅ File with no .tif or .tiff extensions could not be uploaded.")
     st.write("✅ COG uploaded locally is successfully validated.")
@@ -94,5 +91,5 @@ with st.beta_expander("Quality Assurance"):
     st.write("✅ Non-COG file returns Not Valid COG error.")
     st.write("✅ Information about size of IFD headers returned.")
     st.write(":warning: Uploaded file is not displayed once changed options after file was uploaded.")
-with st.beta_expander("Known Limitations"):
+with col2.beta_expander("Known Limitations"):
     st.write(":warning: Max file size to upload is 200MB")

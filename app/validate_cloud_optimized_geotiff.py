@@ -354,20 +354,19 @@ def validate(ds, check_tiled=True, full_check=False):
 def main_validate(ds, filename):
     full_check = 'yes'
     st.write('## Validation')
-
     try:
         warnings, errors, details = validate(ds, full_check=full_check)
             
         if errors:
-            st.error('%s is NOT a valid cloud optimized GeoTIFF.' % filename)
+            st.error('⛔️ %s **is NOT a valid cloud optimized GeoTIFF.**' % filename)
             for error in errors:
                 st.error(' - ' + error)
         if not errors:
-            st.success('%s is a valid cloud optimized GeoTIFF' % filename)
+            st.success('✅ %s **is a valid cloud optimized GeoTIFF.**' % filename)
         if warnings:
             st.write('## Warnings')
             for warning in warnings:
-                st.warning(' - ' + warning)
+                st.warning(' :warning: ' + warning)
         if not warnings and not errors:
             headers_size = min(details['data_offsets'][k] for k in details['data_offsets'])
             if headers_size == 0:
@@ -375,5 +374,5 @@ def main_validate(ds, filename):
             st.write('## Additional Information')
             st.info('\nThe size of all IFD headers is %d bytes' % headers_size)
     except ValidateCloudOptimizedGeoTIFFException as e:
-        st.error('%s is NOT a valid cloud optimized GeoTIFF : %s' %
+        st.error('⛔️ %s **is NOT a valid cloud optimized GeoTIFF: %s' %
               (filename, str(e)))
