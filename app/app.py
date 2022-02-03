@@ -23,7 +23,7 @@ st.image(CHECK_EMOJI_URL, width=80)
 """
 # Cloud Optimized GeoTIFF Validator
 """
-source = st.radio("Select the source of your Cloud Optimized GeoTIFF",('Local file', 'Link to remote file'))
+source = st.radio("Select the source of your Cloud Optimized GeoTIFF",('Local file', 'Link to the remote file'))
 
 uploaded_file = None
 cog_link = None
