@@ -52,7 +52,7 @@ if source == 'Local file':
                 ds = validator.readFile(uploaded_file)
                 filename = uploaded_file.name
                 validator.main_validate(ds, filename)
-elif source == 'Link to remote file':
+elif source == 'Link to the remote file':
     cog_link = st.text_input("Insert a URL of your COG file")
     if cog_link is not '':
         if st.button('Validate'):
@@ -77,18 +77,14 @@ elif source == 'Link to remote file':
 The implementation designed to be as simple as possible. The validation code used is the one shared on [COG Developers Guide](https://www.cogeo.org/developers-guide.html) linking to [this source code](https://github.com/OSGeo/gdal/blob/master/gdal/swig/python/gdal-utils/osgeo_utils/samples/validate_cloud_optimized_geotiff.py) by [Even Rouault](https://twitter.com/EvenRouault).
 """
 
-col1, col2 = st.beta_columns([2,1])
-
-with col1.beta_expander("Quality Assurance"):
-    st.write("✅ Tested on Google Chrome Version 91.0.4472.114.")
+with st.expander("Quality Assurance"):
     st.write("✅ File with no .tif or .tiff extensions could not be uploaded.")
     st.write("✅ COG uploaded locally is successfully validated.")
     st.write("✅ Broken links are not valid.")
     st.write("✅ Links with no extension are not valid.")
-    st.write("✅ Links with no not .tif ot .tiff extensions are not valid.")
-    st.write("✅ COG stored on AWS is successfully validated.")
+    st.write("✅ Links with not .tif or .tiff extensions are not valid.")
     st.write("✅ Non-COG file returns Not Valid COG error.")
     st.write("✅ Information about size of IFD headers returned.")
-    st.write(":warning: Uploaded file is not displayed once changed options after file was uploaded.")
-with col2.beta_expander("Known Limitations"):
+    st.write(":warning: Uploaded file is not available once changed to Link to the remote file option.")
+with st.expander("Known Limitations"):
     st.write(":warning: Max file size to upload is 200MB")
