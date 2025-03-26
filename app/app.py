@@ -7,7 +7,7 @@ from osgeo import gdal
 
 import validate_cloud_optimized_geotiff as validator
 
-CHECK_EMOJI_URL = "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/285/check-box-with-check_2611-fe0f.png"
+CHECK_EMOJI_URL = "https://em-content.zobj.net/source/apple/391/check-box-with-check_2611-fe0f.png"
 
 
 # Set page title and favicon.
